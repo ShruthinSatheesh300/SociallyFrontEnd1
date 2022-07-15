@@ -1,0 +1,75 @@
+.mainDiv{
+    display: block;
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+
+}
+
+.field{
+    height: 30px;
+}
+
+
+
+.card {
+    top: 100px;
+    width: 300px;
+    min-height: 300px;
+    z-index: 1;
+    padding: 60px;
+    margin-left: -32px;
+    max-height: 500px;
+    background-color: #fff;
+}
+.h1 {
+    margin-left: 58px;
+    letter-spacing: 0px;
+    color: #0a0102;
+    text-transform: uppercase;
+    opacity: 1;
+    font-size: 16px;
+}
+
+::ng-deep .mat-tab-header {
+    border-bottom: none;
+}
+::ng-deep .mat-ink-bar {
+    background-color: black !important;
+    bottom: 5px !important;
+}
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-active {
+    min-width: 0px !important;
+    padding: 0px !important;
+    margin: 30px !important;
+}
+
+.loginbutton {
+    width: 270px;
+    height: 37px;
+    background: #a03037 0% 0% no-repeat padding-box;
+    border-radius: 1px;
+    opacity: 1;
+    border: none;
+    margin-top: 20px;
+   
+}
+h2 {
+    width: 191px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 20px 0 20px 35px;
+}
+
+h2 span {
+    background: #fff;
+    padding: 0 10px;
+}
+
+::ng-deep .mat-tab-header-pagination {
+    display: none !important;
+}
+
+

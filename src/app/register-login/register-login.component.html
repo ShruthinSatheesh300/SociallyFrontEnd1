@@ -1,0 +1,96 @@
+<div class="mainDiv">
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+
+
+        <div style="display: flex; flex-flow:row">
+            <mat-card class="card">
+                <div fxLayout="row" fxLayoutAlign="space-evenly start" style="margin-top:-89px;">
+                    <!-- //login form -->
+                    <mat-tab-group>
+                        <mat-tab label="Login">
+                            <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="space-around">
+                                <div>
+                                    <label>EmailId</label>
+                                    <div>
+                                        <mat-form-field width="600px" appearance="outline">
+
+                                            <input style="border: black;height: 25px; ;width: 300px" matInput
+                                                type="text" formControlName="email">
+                                            <mat-error>Email Required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <label>Password</label>
+                                    <div>
+                                        <mat-form-field width="600px" appearance="outline">
+                                            <input style="border: black;height: 25px; ;width: 300px" matInput
+                                                formControlName="password">
+                                            <mat-error>Password Required!</mat-error>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </mat-tab>
+
+                        <!-- //signupForm -->
+                        <mat-tab label="SignUp">
+                            <form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="space-evenly center">
+
+                                <div>
+                                    <span>First Name</span>
+                                    <div>
+                                        <mat-form-field width="600px" appearance="outline">
+                                            <input matInput formControlName="firstName">
+                                            <mat-error>First Name Required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 20px;">
+                                    <span>Last Name</span>
+                                    <div>
+                                        <mat-form-field width="600px" appearance="outline">
+                                            <input matInput formControlName="lastName">
+                                            <mat-error>Last Name Required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
+                                <div style="margin-top: 20px;">
+                                    <span>Email</span>
+                                    <div>
+                                        <mat-form-field appearance="outline">
+
+                                            <input matInput formControlName="email">
+                                            <mat-error>Email Required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <span>Password</span>
+                                    <div>
+                                        <mat-form-field appearance="outline">
+
+                                            <input matInput matInput formControlName="password">
+                                            <mat-error>Password Required!</mat-error>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                            <button (click)="onSignup()" class="loginbutton" style="color: white;">Signup</button>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
