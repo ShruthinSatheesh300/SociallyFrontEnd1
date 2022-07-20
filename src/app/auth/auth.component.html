@@ -1,0 +1,22 @@
+<div div class="mainDiv">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div style="display: flex; flex-flow: row">
+      <mat-card class="card">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-evenly start"
+          style="margin-top: -89px"
+        >
+          <mat-tab-group [selectedIndex]="0">
+            <mat-tab label="Login">
+              <app-login (loginToAuth)="onLogin($event)"></app-login>
+            </mat-tab>
+            <mat-tab label="SignUp">
+              <app-register (registerToAuth)="onSignup($event)"></app-register>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
