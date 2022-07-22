@@ -1,5 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,13 +11,14 @@ export class HttpService {
 
   constructor(private httpClient: HttpClient) {}
 
-  postService(url: string, reqData: any, headers: any) {
-    return this.httpClient.post(this.baseUrl + url, reqData, headers);
+  postService(url: string, reqData: object) {
+    return this.httpClient.post(this.baseUrl + url, reqData);
   }
 
-  getService(url: string, params: any){
-    return this.httpClient.get(this.baseUrl + url ,{ params ,observe: 'response' });
-    
-    
+  getService(url: string, params: any) {
+    return this.httpClient.get(this.baseUrl + url, {
+      params,
+      observe: 'response',
+    });
   }
 }

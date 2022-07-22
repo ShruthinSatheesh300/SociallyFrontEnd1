@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -10,18 +11,25 @@ import { AuthService } from './auth.service';
 export class AuthComponent {
   constructor(
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
-  onLogin(loginFormData: any) {
+  public onLogin(loginFormData: object): void {
     this.authService.login(loginFormData).subscribe((res: any) => {
+      const auth = res.headers.get('Authorization');
+      const token = auth.split(' ')[1];
+
+      localStorage.setItem('Authorization', token);
+
       this._snackBar.open('Login Succesfull', '', {
         duration: 3000,
       });
+      this.router.navigateByUrl('dash');
     });
   }
 
-  onSignup(signUpFormData: any) {
+  public onSignup(signUpFormData: object): void {
     this.authService.registerUser(signUpFormData).subscribe((res: any) => {});
   }
 }
