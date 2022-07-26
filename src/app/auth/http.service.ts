@@ -21,4 +21,8 @@ export class HttpService {
       observe: 'response',
     });
   }
+
+  getallService(url: string) {
+    return this.httpClient.get (this.baseUrl + url )
+  }
 }

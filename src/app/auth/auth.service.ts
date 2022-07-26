@@ -15,4 +15,12 @@ export class AuthService {
   public login(reqData: object): Observable<object> {
     return this.httpService.getService('/users/', reqData);
   }
+
+  public getAllUserPosts():Observable<object> {
+    return this.httpService.getallService('/users/:_id/posts')
+  }
+
+  public getToken(){
+    return localStorage.getItem('Authorization')
+  }
 }
