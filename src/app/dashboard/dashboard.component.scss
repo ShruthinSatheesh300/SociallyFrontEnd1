@@ -1,0 +1,44 @@
+.example-spacer {
+  flex: auto;
+}
+
+.spacer {
+  flex: 5px;
+}
+
+.style1 {
+  margin-left: 100px;
+  border-radius: 10px 10px 10px 10px;
+  border-width: 1px 1px 1px 6px;
+  height: 10px;
+  display: flex;
+  width: 600px;
+  flex-shrink: 300px;
+}
+.style2 {
+  border: none;
+  height: 20px;
+  width: 600px;
+  overflow: hidden;
+  font-family: 16px Google Sans, Roboto, RobotoDraft, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+}
+.img1:hover {
+  // opacity: 0.7;
+  background-color: transparent;
+  border: transparent;
+  display: flex;
+  height: 30px;
+  width: 100px;
+  cursor: pointer;
+  border-left: -50px;
+}
+.img2 {
+  opacity: 0.7;
+  background-color: transparent;
+  border: none;
+  justify-content: space-between;
+  border-right: 50px;
+  cursor: pointer;
+}

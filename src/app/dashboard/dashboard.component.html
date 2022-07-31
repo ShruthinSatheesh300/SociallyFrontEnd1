@@ -1,1 +1,20 @@
-<app-header></app-header>
+<div fxLayout="column">
+  <mat-toolbar color="primary">
+    <span>Socially</span>
+    <div style="display: flex; flex-direction: row">
+      <mat-card class="style1">
+        <input class="style2" matInput type="text" />
+      </mat-card>
+    </div>
+    <div class="spacer"></div>
+    <button mat-raised-button class="img1:hover" (click)="openDialog()">
+      Add Post
+    </button>
+    <span class="example-spacer"></span>
+
+    <button class="img2" mat-icon-button (click)="logOut()">
+      <img src="../../../assets/account_circle_white_48dp.svg" />
+    </button>
+  </mat-toolbar>
+  <app-post-listing></app-post-listing>
+</div>

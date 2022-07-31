@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Add a Post</h1>
+<mat-dialog-content>
+  <textarea
+    matInput
+    class="text-Description"
+    matinput
+    placeholder="whats on your mind..."
+    [(ngModel)]="content"
+  ></textarea>
+</mat-dialog-content>
+<div fxLayout="row" fxLayoutAlign="space-between end" style="  margin-top: 25px;
+">
+  <div>
+    <button class="checkoutbutton"
+      mat-dialog-close="true"
+      mat-icon-button
+      
+    >
+      Close
+    </button>
+    <span class="example-spacer"></span>
+
+    <button class="checkoutbutton"
+      mat-dialog-close="created"
+      mat-icon-button
+      (click)="onSubmit()"
+      style="opacity: 0.9; margin-right: 10px"
+    >
+      Post
+    </button>
+  </div>
+</div>

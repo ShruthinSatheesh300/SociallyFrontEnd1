@@ -1,0 +1,11 @@
+<div fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="10px">
+  <div
+    class="allposts"
+    *ngFor="let post of posts"
+  >
+    <!-- <span *ngIf="!post.creator">by {{ post.creator.firstName }}</span> -->
+    <span *ngIf=post.creator>by - {{ post.creator.firstName }}</span>
+
+    <span>{{ post.content }}</span>
+  </div>
+</div>
