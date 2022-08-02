@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent, PostListingComponent, AddpostComponent],
-  entryComponents: [AddpostComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

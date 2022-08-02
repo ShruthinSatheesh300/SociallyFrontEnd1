@@ -1,11 +1,11 @@
-<div fxLayoutAlign="center center" fxLayout="row wrap" fxLayoutGap="10px">
-  <div
-    class="allposts"
-    *ngFor="let post of posts"
-  >
-    <!-- <span *ngIf="!post.creator">by {{ post.creator.firstName }}</span> -->
-    <span *ngIf=post.creator>by - {{ post.creator.firstName }}</span>
-
-    <span>{{ post.content }}</span>
+<div fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="10px">
+  <div class="allposts" *ngFor="let post of posts">
+    <span *ngIf="firstName !== post.creator.firstName"
+      >by - {{ post.creator.firstName }}</span
+    >
+    <span *ngIf="firstName === post.creator.firstName">by - me</span>
+    <div fxLayoutAlign="center center" class="content">
+      <span>{{ post.content }}</span>
+    </div>
   </div>
 </div>

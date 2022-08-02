@@ -8,19 +8,16 @@
     [(ngModel)]="content"
   ></textarea>
 </mat-dialog-content>
-<div fxLayout="row" fxLayoutAlign="space-between end" style="  margin-top: 25px;
-">
+<div fxLayout="row" fxLayoutAlign="space-between end" style="margin-top: 25px">
   <div>
-    <button class="checkoutbutton"
-      mat-dialog-close="true"
-      mat-icon-button
-      
-    >
+    <button class="checkoutbutton" mat-dialog-close="true" mat-icon-button>
       Close
     </button>
     <span class="example-spacer"></span>
 
-    <button class="checkoutbutton"
+    <button
+      *ngIf="this.content.length !== 0"
+      class="checkoutbutton"
       mat-dialog-close="created"
       mat-icon-button
       (click)="onSubmit()"

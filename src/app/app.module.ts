@@ -3,6 +3,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -12,7 +14,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import { TokenInterceptorService } from './auth/token-interceptor.service';
+import { TokenInterceptorService } from './core/token-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,9 +32,14 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
     HttpClientModule,
     AuthModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass:TokenInterceptorService, multi:true}
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

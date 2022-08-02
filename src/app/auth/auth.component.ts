@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -8,24 +8,34 @@ import { AuthService } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private router: Router
   ) {}
+  ngOnInit(): void {
+    const token = localStorage.getItem('Authorization');
+    if (token) {
+      this.router.navigateByUrl('dashboard');
+    }
+  }
 
   public onLogin(loginFormData: object): void {
     this.authService.login(loginFormData).subscribe((res: any) => {
+      const userData = res.body.data;
+
+      localStorage.setItem('UserData', JSON.stringify(userData));
+
       const auth = res.headers.get('Authorization');
       const token = auth.split(' ')[1];
 
       localStorage.setItem('Authorization', token);
 
-      this._snackBar.open('Login Succesfull', '', {
+      this.snackBar.open('Login Succesfull', '', {
         duration: 3000,
       });
-      this.router.navigateByUrl('dash');
+      this.router.navigateByUrl('dashboard');
     });
   }
 
