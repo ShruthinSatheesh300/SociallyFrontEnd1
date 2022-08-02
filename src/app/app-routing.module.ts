@@ -14,6 +14,13 @@ const routes: Routes = [
       },
     ],
   },
+  // { path: 'dash', redirectTo: 'dash', pathMatch: 'full' },
+
+  {
+    path: 'dash',
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
 ];
 
 @NgModule({
