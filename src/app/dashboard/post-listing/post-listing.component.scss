@@ -1,17 +1,18 @@
 .allposts {
   display: flex;
   flex-direction: column;
+  width: 600px;
 
-  border: 1px solid gainsboro;
-  width: 250px;
-  height: 150px;
+  border: none;
+  height: 300px;
   margin-right: -65%;
   margin: 20px;
+
 }
 .content{
-  width: 251px;
+  width: auto;
   height: 210px;  
   background-color: gainsboro;
   margin-top: -1px;
-  font-size: large;
+  font-size: 30px;
 }
