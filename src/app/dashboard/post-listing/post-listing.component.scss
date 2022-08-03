@@ -1,0 +1,18 @@
+.allposts {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+
+  border: none;
+  height: 300px;
+  margin-right: -65%;
+  margin: 20px;
+
+}
+.content{
+  width: auto;
+  height: 210px;  
+  background-color: gainsboro;
+  margin-top: -1px;
+  font-size: 30px;
+}
