@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnChanges } from '@angular/core';
 import { PostModel } from 'src/app/shared/models/post.model';
 
@@ -9,6 +10,23 @@ import { PostModel } from 'src/app/shared/models/post.model';
 export class PostListingComponent implements OnChanges {
   public firstName!: string;
   @Input() posts: PostModel[] = [];
+
+  constructor(private datePipe: DatePipe) {}
+
+  dateComparision(params: string) {
+    const then = new Date(params);
+    const now = new Date();
+    const msBetweenDates = now.getTime() - then.getTime();
+
+    const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
+    if (hoursBetweenDates < 24) {
+      return this.datePipe.transform(params, 'h:mm a');
+    } else if (hoursBetweenDates > 48) {
+      return this.datePipe.transform(params, 'MMM d, y');
+    } else {
+      return 'yesterday';
+    }
+  }
 
   ngOnChanges(): void {
     const userData = localStorage.getItem('UserData');

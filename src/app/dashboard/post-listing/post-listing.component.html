@@ -1,13 +1,12 @@
 <div fxLayoutAlign="start center" fxLayout="column" fxLayoutGap="10px">
   <mat-card class="allposts" *ngFor="let post of posts">
-    <span style="font-size: large" *ngIf="firstName !== post.creator.firstName"
-      >by - {{ post.creator.firstName }}</span
+    <span style="font-size: large" *ngIf="firstName !== post.creator.firstName">
+      {{ post.creator.firstName }}</span
     >
-    <span style="font-size: large" *ngIf="firstName === post.creator.firstName"
-      >by - me</span
+    <span style="font-size: large" *ngIf="firstName === post.creator.firstName">
+      me</span
     >
-    <span>{{ post.createdAt | date: "short" }}</span>
-
+    <span>{{ dateComparision(post.createdAt) }}</span>
     <div fxLayoutAlign="center center" class="content">
       <span>{{ post.content }}</span>
     </div>
