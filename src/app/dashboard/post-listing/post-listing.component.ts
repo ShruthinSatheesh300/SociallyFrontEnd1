@@ -15,9 +15,9 @@ export class PostListingComponent implements OnChanges {
   public dateComparision(params: string) {
     const then = new Date(params);
     const now = new Date();
-    const msBetweenDates = now.getTime() - then.getTime();
+    const diffBetweenDates = now.getTime() - then.getTime();
 
-    const hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
+    const hoursBetweenDates = diffBetweenDates / (60 * 60 * 1000);
     if (hoursBetweenDates < 24) {
       return this.datePipe.transform(params, 'h:mm a');
     } else if (hoursBetweenDates > 48) {
