@@ -12,8 +12,7 @@ export class PostListingComponent implements OnChanges {
   @Input() posts: PostModel[] = [];
 
   constructor(private datePipe: DatePipe) {}
-
-  dateComparision(params: string) {
+  public dateComparision(params: string) {
     const then = new Date(params);
     const now = new Date();
     const msBetweenDates = now.getTime() - then.getTime();
