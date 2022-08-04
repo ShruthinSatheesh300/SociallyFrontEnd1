@@ -6,7 +6,7 @@
     <span style="font-size: large" *ngIf="firstName === post.creator.firstName">
       me</span
     >
-    <span>{{ dateComparision(post.createdAt) }}</span>
+    <span>{{ getCreatedAt(post.createdAt) }}</span>
     <div fxLayoutAlign="center center" class="content">
       <span>{{ post.content }}</span>
     </div>

@@ -12,16 +12,17 @@ export class PostListingComponent implements OnChanges {
   @Input() posts: PostModel[] = [];
 
   constructor(private datePipe: DatePipe) {}
-  public dateComparision(params: string) {
-    const then = new Date(params);
+  public getCreatedAt(timeStamp: string): string | null {
+    const then = new Date(timeStamp);
     const now = new Date();
     const diffBetweenDates = now.getTime() - then.getTime();
+    const format = 60 * 60 * 1000;
 
-    const hoursBetweenDates = diffBetweenDates / (60 * 60 * 1000);
+    const hoursBetweenDates = diffBetweenDates / format;
     if (hoursBetweenDates < 24) {
-      return this.datePipe.transform(params, 'h:mm a');
+      return this.datePipe.transform(timeStamp, 'h:mm a');
     } else if (hoursBetweenDates > 48) {
-      return this.datePipe.transform(params, 'MMM d, y');
+      return this.datePipe.transform(timeStamp, 'MMM d, y');
     } else {
       return 'yesterday';
     }
