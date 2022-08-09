@@ -1,6 +1,13 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 import { PostModel } from 'src/app/shared/models/post.model';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-post-listing',
@@ -9,9 +16,24 @@ import { PostModel } from 'src/app/shared/models/post.model';
 })
 export class PostListingComponent implements OnChanges {
   public firstName!: string;
+  public postId!: string;
   @Input() posts: PostModel[] = [];
+  public likes = [];
+  public user: string | null;
+  public userId: any;
 
-  constructor(private datePipe: DatePipe) {}
+  constructor(
+    private datePipe: DatePipe,
+    private dashboardService: DashboardService
+  ) {
+    this.user = localStorage.getItem('UserData');
+    if (this.user) {
+      const user = JSON.parse(this.user);
+      this.userId = user.id;
+    }
+  }
+  @Output() updatedLikes = new EventEmitter<object>();
+
   public getCreatedAt(timeStamp: string): string | null {
     const then = new Date(timeStamp);
     const now = new Date();
@@ -32,9 +54,15 @@ export class PostListingComponent implements OnChanges {
     const userData = localStorage.getItem('UserData');
     if (userData) {
       const user = JSON.parse(userData);
-      console.log(userData);
-      console.log(user);
       this.firstName = user.firstName;
     }
+  }
+  public updateLike(postId: string): void {
+    this.dashboardService
+      .updateLikes(this.userId, postId)
+      .subscribe((res: any) => {
+        this.likes = res.data.likes;
+        this.updatedLikes.emit(res);
+      });
   }
 }

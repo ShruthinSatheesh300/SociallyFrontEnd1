@@ -12,7 +12,8 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   public posts: PostModel[] = [];
-  public post: any
+  public post: any;
+
   constructor(
     public dailog: MatDialog,
     private router: Router,
@@ -33,7 +34,6 @@ export class DashboardComponent implements OnInit {
   }
   public getAllPosts(): void {
     this.dashboardService.getAllPosts().subscribe((res: PostModel[]) => {
-
       this.posts = res;
     });
   }
@@ -47,6 +47,12 @@ export class DashboardComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+  onScroll() {
+    console.log('scrolled');
+  }
+  public updatedDashboard() {
+    this.getAllPosts();
   }
 
   public logOut() {

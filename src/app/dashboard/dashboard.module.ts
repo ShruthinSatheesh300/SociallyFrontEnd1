@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    InfiniteScrollModule,
   ],
 })
 export class DashboardModule {}

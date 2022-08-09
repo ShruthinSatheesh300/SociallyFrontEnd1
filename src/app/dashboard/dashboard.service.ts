@@ -20,4 +20,8 @@ export class DashboardService {
   public createPost(reqData: object): Observable<object> {
     return this.httpService.post('/posts/', reqData);
   }
+
+  public updateLikes(reqData:object,postId: any): Observable<object> {
+    return this.httpService.put('/posts/' + postId + '/like',reqData);
+  }
 }

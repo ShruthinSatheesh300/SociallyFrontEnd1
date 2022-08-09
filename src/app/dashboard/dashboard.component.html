@@ -16,5 +16,13 @@
       <img src="../../../assets/account_circle_white_48dp.svg" />
     </button>
   </mat-toolbar>
-  <app-post-listing [posts]="posts"></app-post-listing>
+  <app-post-listing
+    class="scroll"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+    [scrollWindow]="false"
+    [posts]="posts" (updatedLikes)="updatedDashboard()"
+  ></app-post-listing>
 </div>

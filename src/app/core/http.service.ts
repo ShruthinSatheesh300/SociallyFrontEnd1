@@ -20,4 +20,10 @@ export class HttpService {
       observe: 'response',
     });
   }
+  put(url:string,reqData:object ,params?: any){
+    return this.httpClient.put(this.baseUrl + url,{
+      params,
+      observe: 'response'
+    },reqData)
+  }
 }
