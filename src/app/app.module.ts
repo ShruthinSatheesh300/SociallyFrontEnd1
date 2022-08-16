@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -34,6 +35,7 @@ import { TokenInterceptorService } from './core/token-interceptor.service';
     AuthModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatMenuModule,
   ],
   providers: [
     {

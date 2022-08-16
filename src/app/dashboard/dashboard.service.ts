@@ -8,8 +8,8 @@ import { PostModel } from '../shared/models/post.model';
 })
 export class DashboardService {
   constructor(private httpService: HttpService) {}
-  public getAllPosts(): Observable<PostModel[]> {
-    return this.httpService.get('/posts/').pipe(
+  public getAllPosts(page?: any): Observable<PostModel[]> {
+    return this.httpService.get('/posts/', page).pipe(
       map((result: any) => {
         const data = result.body.data;
         return data.map((post: any) => new PostModel(post));
@@ -21,7 +21,14 @@ export class DashboardService {
     return this.httpService.post('/posts/', reqData);
   }
 
-  public updateLikes(reqData:object,postId: any): Observable<object> {
-    return this.httpService.put('/posts/' + postId + '/like',reqData);
+  public updateLikes(postId: string): Observable<PostModel> {
+    return this.httpService.put('/posts/' + postId + '/like').pipe(
+      map((result: any) => {
+        return new PostModel(result.data);
+      })
+    );
+  }
+  public usersLiked(postId: string): Observable<object> {
+    return this.httpService.get('/posts/' + postId);
   }
 }

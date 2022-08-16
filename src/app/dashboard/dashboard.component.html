@@ -12,17 +12,23 @@
     </button>
     <span class="example-spacer"></span>
 
-    <button class="img2" mat-icon-button (click)="logOut()">
+    <button class="img2" [matMenuTriggerFor]="aboveMenu">
       <img src="../../../assets/account_circle_white_48dp.svg" />
     </button>
+    <mat-menu #aboveMenu="matMenu" yPosition="below">
+      <div style="margin-top: 10px" fxLayoutAlign="center center">
+        <button mat-menu-button style="color: black" (click)="logOut()">
+          SignOut
+        </button>
+      </div>
+      <div style="margin-top: 10px" fxLayoutAlign="center center">
+        <button mat-menu-button style="color: black" (click)="toProfile()">
+          Profile
+        </button>
+      </div>
+    </mat-menu>
   </mat-toolbar>
-  <app-post-listing
-    class="scroll"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()"
-    [scrollWindow]="false"
-    [posts]="posts" (updatedLikes)="updatedDashboard()"
-  ></app-post-listing>
+  <app-infinite-scroll (scrolled)="onScroll()">
+    <app-post-listing [posts]="posts"></app-post-listing>
+  </app-infinite-scroll>
 </div>

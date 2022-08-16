@@ -1,13 +1,9 @@
 import { DatePipe } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PostModel } from 'src/app/shared/models/post.model';
 import { DashboardService } from '../dashboard.service';
+import { UsersLikedComponent } from '../users-liked/users-liked.component';
 
 @Component({
   selector: 'app-post-listing',
@@ -17,22 +13,14 @@ import { DashboardService } from '../dashboard.service';
 export class PostListingComponent implements OnChanges {
   public firstName!: string;
   public postId!: string;
+  public likes!: string[];
   @Input() posts: PostModel[] = [];
-  public likes = [];
-  public user: string | null;
-  public userId: any;
 
   constructor(
     private datePipe: DatePipe,
-    private dashboardService: DashboardService
-  ) {
-    this.user = localStorage.getItem('UserData');
-    if (this.user) {
-      const user = JSON.parse(this.user);
-      this.userId = user.id;
-    }
-  }
-  @Output() updatedLikes = new EventEmitter<object>();
+    private dashboardService: DashboardService,
+    public dialog: MatDialog
+  ) {}
 
   public getCreatedAt(timeStamp: string): string | null {
     const then = new Date(timeStamp);
@@ -58,11 +46,28 @@ export class PostListingComponent implements OnChanges {
     }
   }
   public updateLike(postId: string): void {
-    this.dashboardService
-      .updateLikes(this.userId, postId)
-      .subscribe((res: any) => {
-        this.likes = res.data.likes;
-        this.updatedLikes.emit(res);
-      });
+    const postIndex = this.posts.findIndex((post) => post.id === postId);
+
+    this.dashboardService.updateLikes(postId).subscribe((post: PostModel) => {
+      this.posts[postIndex] = post;
+    });
+  }
+
+  public openDailog(): void {
+    const dialogBox = this.dialog.open(UsersLikedComponent, {
+      width: '600px',
+      disableClose: true,
+    });
+    dialogBox.afterClosed().subscribe((res:any) => {
+      this.usersLiked(res);
+    });
+
+
+  }
+
+  public usersLiked(postId:string):void {
+    this.dashboardService.usersLiked(postId).subscribe((res:any) => {
+      this.posts = res
+    })
   }
 }

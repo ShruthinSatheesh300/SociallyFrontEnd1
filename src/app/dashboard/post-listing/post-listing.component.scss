@@ -19,3 +19,15 @@
   height: 100%;
   overflow: scroll;
 }
+.liked {
+  color: red;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.not-liked {
+  color: grey;
+  border: black;
+  background-color: transparent;
+  cursor: pointer;
+}

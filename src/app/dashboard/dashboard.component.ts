@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PostModel } from '../shared/models/post.model';
+import { UserModel } from '../shared/models/user.model';
 import { AddpostComponent } from './add-post/add-post.component';
 import { DashboardService } from './dashboard.service';
 
@@ -12,7 +13,10 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   public posts: PostModel[] = [];
-  public post: any;
+  public post!: PostModel;
+  public page: number = 0;
+  public userId!: string;
+  public user!: UserModel;
 
   constructor(
     public dailog: MatDialog,
@@ -20,7 +24,15 @@ export class DashboardComponent implements OnInit {
     private dashboardService: DashboardService
   ) {}
   ngOnInit(): void {
+    this.getUserId();
     this.getAllPosts();
+  }
+  private getUserId(): void {
+    const user = localStorage.getItem('UserData');
+    if (user) {
+      this.user = JSON.parse(user);
+      this.userId = this.user.id;
+    }
   }
 
   public openDialog(): void {
@@ -33,8 +45,25 @@ export class DashboardComponent implements OnInit {
     });
   }
   public getAllPosts(): void {
-    this.dashboardService.getAllPosts().subscribe((res: PostModel[]) => {
-      this.posts = res;
+    this.dashboardService
+      .getAllPosts({ page: this.page })
+      .subscribe((res: PostModel[]) => {
+        this.scrollPage(res);
+        this.calculateIsLiked(res);
+        // this.posts = res;
+      });
+  }
+
+  private scrollPage(posts: PostModel[]): void {
+    posts.forEach((a: PostModel) => {
+      this.posts.push(a);
+    });
+  }
+
+  private calculateIsLiked(posts: PostModel[]): void {
+    posts.forEach((post) => {
+      const likes = post.likes;
+      post.isLiked = likes.includes(this.userId);
     });
   }
 
@@ -48,16 +77,20 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
-  onScroll() {
+
+  public onScroll(): void {
     console.log('scrolled');
-  }
-  public updatedDashboard() {
+    this.page = ++this.page;
     this.getAllPosts();
   }
 
-  public logOut() {
+  public logOut(): void {
     localStorage.removeItem('Authorization');
     localStorage.removeItem('UserName');
     this.router.navigateByUrl('');
+  }
+
+  public toProfile(): void {
+    this.router.navigateByUrl('profilepage');
   }
 }

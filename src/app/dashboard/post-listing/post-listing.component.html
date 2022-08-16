@@ -20,18 +20,13 @@
       <div style="margin-top: 20px">
         <button
           (click)="updateLike(post.id)"
-          style="
-            color: red;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-          "
+          [ngClass]="post.isLiked ? 'liked' : 'not-liked'"
           mat-icon-button
         >
           <mat-icon>favorite</mat-icon>
         </button>
 
-        <h4>{{ post.likes.length }} Likes</h4>
+        <h4 (click)="openDailog()">{{ post.likes.length }} Likes</h4>
       </div>
     </mat-card>
   </div>
