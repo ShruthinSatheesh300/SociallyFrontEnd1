@@ -1,0 +1,19 @@
+.style1 {
+    margin-left: 100px;
+    border-radius: 10px 10px 10px 10px;
+    border-width: 1px 1px 1px 6px;
+    height: 10px;
+    display: flex;
+    width: 600px;
+    flex-shrink: 300px;
+  }
+  
+  .style2 {
+    border: none;
+    height: 20px;
+    width: 600px;
+    overflow: hidden;
+    font-family: 16px Google Sans, Roboto, RobotoDraft, Helvetica, Arial,
+      sans-serif;
+    font-size: 16px;
+  }

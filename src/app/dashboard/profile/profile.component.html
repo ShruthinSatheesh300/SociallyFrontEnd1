@@ -1,0 +1,26 @@
+<div fxLayout="column">
+    <mat-toolbar color="primary">
+      <span>Socially</span>
+      <div style="display: flex; flex-direction: row">
+        <mat-card class="style1">
+          <input class="style2" matInput type="text" />
+        </mat-card>
+      </div>
+    </mat-toolbar>
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      style="margin-left: 40px; margin-top: 40px"
+    >
+      <mat-card style="height: 400px; width: 600px">
+        <div fxLayout="column" fxLayoutAlign="space-around  center">
+          <span style="font-size: 30px"> {{ firstName }} {{ lastName }}</span>
+          <span style="margin-top: 40px"> Email : {{ email }}</span>
+          <div fxLayout="row">
+            <span> Followers : {{ followers.length }}</span>,
+            <span> Following : {{ following.length }}</span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>

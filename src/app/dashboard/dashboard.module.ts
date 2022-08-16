@@ -14,9 +14,10 @@ import { PostListingComponent } from './post-listing/post-listing.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { UsersLikedComponent } from './users-liked/users-liked.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [DashboardComponent, PostListingComponent, AddpostComponent, UsersLikedComponent],
+  declarations: [DashboardComponent, PostListingComponent, AddpostComponent, UsersLikedComponent, ProfileComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
